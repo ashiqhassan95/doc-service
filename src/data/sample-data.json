@@ -1,0 +1,240 @@
+{
+    "version": 1,
+    "name": "doc-service",
+    "data": {
+        "services": [
+            {
+                "id": 1,
+                "name": "Yoga and Pilot Training",
+                "description": "Nam lacinia sapien non leo semper scelerisque. Aliquam volutpat ex et enim congue finibus.",
+                "category": "Training and Fitness",
+                "poster": "https://myoneapron.files.wordpress.com/2011/07/yoga-pose.jpg",
+                "price": 120
+            },
+            {
+                "id": 2,
+                "name": "Vinyasa Yoga",
+                "description": "Curabitur malesuada dui non nulla feugiat, non lobortis leo vehicula.",
+                "category": "Training and Fitness",
+                "poster": "https://myoneapron.files.wordpress.com/2011/07/yoga-pose.jpg",
+                "price": 100
+            },
+            {
+                "id": 3,
+                "name": "Hatha Yoga",
+                "description": "Etiam non aliquam elit, et pulvinar enim. Nam neque sapien, molestie in aliquet non.",
+                "category": "Training and Fitness",
+                "poster": "https://myoneapron.files.wordpress.com/2011/07/yoga-pose.jpg",
+                "price": 149
+            },
+            {
+                "id": 4,
+                "name": "Vinyasa Yoga",
+                "description": "Faucibus interdum nunc. Nulla sit amet pellentesque tortor,",
+                "category": "Training and Fitness",
+                "poster": "https://myoneapron.files.wordpress.com/2011/07/yoga-pose.jpg",
+                "price": 89
+            },
+            {
+                "id": 5,
+                "name": "Vinyasa Yoga",
+                "description": "Nullam lacinia laoreet diam, non luctus mauris euismod in.",
+                "category": "Training and Fitness",
+                "poster": "https://myoneapron.files.wordpress.com/2011/07/yoga-pose.jpg",
+                "price": 219
+            }
+        ],
+        "customers": [
+            {
+                "id": 1,
+                "name": "Adam John",
+                "location": "California",
+                "avaiable_at": "CA 40 Street, California",
+                "avaiable_from": 1578787200,
+                "avaiable_to": 1579676565,
+                "requested_on": 1579676565,
+                "avaiable_slots": [
+                    1578787200,
+                    1578787200
+                ],
+                "service_id": 1,
+                "avatar": "https://randomuser.me/api/portraits/men/32.jpg",
+                "deals": 4
+            },
+            {
+                "id": 2,
+                "name": "John Doe",
+                "location": "Sanfransico",
+                "avaiable_at": "SF 1 Street, Sanfransico",
+                "avaiable_from": 1578787200,
+                "avaiable_to": 1579676565,
+                "requested_on": 1579676565,
+                "avaiable_slots": [
+                    1578787200,
+                    1578787200
+                ],
+                "service_id": 1,
+                "avatar": "https://randomuser.me/api/portraits/men/12.jpg",
+                "deals": 0
+            },
+            {
+                "id": 3,
+                "name": "Laiza",
+                "location": "China",
+                "avaiable_at": "Steet 2, Main China",
+                "avaiable_from": 1578787200,
+                "avaiable_to": 1579676565,
+                "requested_on": 1579676565,
+                "avaiable_slots": [
+                    1578787200,
+                    1578787200
+                ],
+                "service_id": 1,
+                "avatar": "https://randomuser.me/api/portraits/women/44.jpg",
+                "deals": 1
+            },
+            {
+                "id": 4,
+                "name": "Musfr",
+                "location": "London",
+                "avaiable_at": "Steet 120, London",
+                "avaiable_from": 1578787200,
+                "avaiable_to": 1579676565,
+                "requested_on": 1579676565,
+                "avaiable_slots": [
+                    1578787200,
+                    1578787200
+                ],
+                "service_id": 1,
+                "avatar": "https://randomuser.me/api/portraits/men/44.jpg",
+                "deals": 10
+            },
+            {
+                "id": 5,
+                "name": "Kabeer",
+                "location": "Calicut",
+                "avaiable_at": "SM Street, Calicut",
+                "avaiable_from": 1578787200,
+                "avaiable_to": 1579676565,
+                "requested_on": 1579676565,
+                "avaiable_slots": [
+                    1578787200,
+                    1578787200
+                ],
+                "service_id": 1,
+                "avatar": "https://randomuser.me/api/portraits/men/42.jpg",
+                "deals": 14
+            },
+            {
+                "id": 6,
+                "name": "Fida",
+                "location": "Calicut",
+                "avaiable_at": "SM Street, Calicut",
+                "avaiable_from": 1578787200,
+                "avaiable_to": 1579676565,
+                "requested_on": 1579676565,
+                "avaiable_slots": [
+                    1578787200,
+                    1578787200
+                ],
+                "service_id": 1,
+                "avatar": "https://randomuser.me/api/portraits/women/11.jpg",
+                "deals": 14
+            },
+            {
+                "id": 7,
+                "name": "Ruzi",
+                "location": "Los Angles",
+                "avaiable_at": "LOS Street 5, Los Angles",
+                "avaiable_from": 1578787200,
+                "avaiable_to": 1579676565,
+                "requested_on": 1579676565,
+                "avaiable_slots": [
+                    1578787200,
+                    1578787200
+                ],
+                "service_id": 1,
+                "avatar": "https://randomuser.me/api/portraits/women/16.jpg",
+                "deals": 4
+            },
+            {
+                "id": 8,
+                "name": "Ava Cole",
+                "location": "Taiwan",
+                "avaiable_at": "6231 Oak Ridge Ln",
+                "avaiable_from": 1578787200,
+                "avaiable_to": 1579676565,
+                "requested_on": 1579676565,
+                "avaiable_slots": [
+                    1578787200,
+                    1578787200
+                ],
+                "service_id": 2,
+                "avatar": "https://randomuser.me/api/portraits/women/17.jpg",
+                "deals": 0
+            },
+            {
+                "id": 9,
+                "name": "Jane Steeves",
+                "location": "Okland",
+                "avaiable_at": "1637 Depaul Dr",
+                "avaiable_from": 1578787200,
+                "avaiable_to": 1579676565,
+                "requested_on": 1579676565,
+                "avaiable_slots": [
+                    1578787200,
+                    1578787200
+                ],
+                "service_id": 2,
+                "avatar": "https://randomuser.me/api/portraits/women/88.jpg",
+                "deals": 0
+            },
+            {
+                "id": 10,
+                "name": "Gina Hale",
+                "location": "California",
+                "avaiable_at": "2775 College St",
+                "avaiable_from": 1578787200,
+                "avaiable_to": 1579676565,
+                "requested_on": 1579676565,
+                "avaiable_slots": [
+                    1578787200,
+                    1578787200
+                ],
+                "service_id": 2,
+                "avatar": "https://randomuser.me/api/portraits/women/11.jpg",
+                "deals": 0
+            },
+            {
+                "id": 11,
+                "name": "Marc Silva",
+                "location": "Miami",
+                "avaiable_at": "3926 Karen Dr",
+                "avaiable_from": 1578787200,
+                "avaiable_to": 1579676565,
+                "avaiable_slots": [
+                    1578787200,
+                    1578787200
+                ],
+                "service_id": 3,
+                "avatar": "https://randomuser.me/api/portraits/men/16.jpg",
+                "deals": 3
+            },
+            {
+                "id": 12,
+                "name": "Linda Dean",
+                "location": "France",
+                "avaiable_at": "4206 Fincher Rd",
+                "avaiable_from": 1578787200,
+                "avaiable_to": 1579676565,
+                "avaiable_slots": [
+                    1578787200,
+                    1578787200
+                ],
+                "service_id": 3,
+                "avatar": "https://randomuser.me/api/portraits/men/16.jpg",
+                "deals": 3
+            }
+        ]
+    }
+}

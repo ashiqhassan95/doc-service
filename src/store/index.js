@@ -1,15 +1,21 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from "vue";
+import Vuex from "vuex";
+import request from "./modules/request";
+// import service from "./modules/service";
+// import payment from "./modules/payment";
 
-Vue.use(Vuex)
+Vue.use(Vuex);
+
+const initialState = {
+  isAppLoaded: false,
+};
 
 export default new Vuex.Store({
-  state: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
+  strict: true,
+  state: initialState,
   modules: {
-  }
-})
+    request,
+    // service,
+    // payment,
+  },
+});
