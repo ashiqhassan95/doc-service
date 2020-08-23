@@ -2,13 +2,13 @@ import * as data from "../../../data/data";
 import * as types from "./mutation-type";
 import ls from "../../../services/ls";
 
-export const fetchRequests = ({ commit }) => {
+export const fetchServices = ({ commit }) => {
   commit(types.SET_LOADING, true);
 
   return new Promise((resolve) => {
     const services = data.getServices();
     const customers = data.getCustomers();
-    const serviceOnRequestStage = [];
+    const pendingService = [];
 
     services.forEach((serviceItem) => {
       const { id, name, description, category, price, poster } = serviceItem;
@@ -34,11 +34,10 @@ export const fetchRequests = ({ commit }) => {
           return false;
         }),
       };
-      serviceOnRequestStage.push(service);
-    });
-
+      pendingService.push(service);
+    }); 
     commit(types.SET_LOADING, false);
-    commit(types.SET_REQUESTS, serviceOnRequestStage);
+    commit(types.SET_SERVICES, pendingService);
     resolve(true);
   });
 };
@@ -65,13 +64,13 @@ export const getClientForService = ({ commit }, serviceId) => {
       }
       return false;
     });
-    commit(types.SET_CLIENT_TO_SERIVICE_REQUEST, filteredCustomers);
+    commit(types.SET_CLIENTS_TO_SERIVICE, filteredCustomers);
     resolve(customers);
   });
 };
 
 export const acceptClientRequest = ({ commit }, { clientId, serviceId }) => {
-  return new Promise((resolve, reject) => { 
+  return new Promise((resolve, reject) => {
     if (!clientId || !serviceId) {
       reject({
         success: false,

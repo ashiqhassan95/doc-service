@@ -1,4 +1,4 @@
-export const requests = (state) => state.requests;
+export const clients = (state) => state.clients;
+export const services = (state) => state.services;
 export const isLoading = (state) => state.isLoading;
-export const selectedRequest = (state) => state.selectedRequest;
-export const clients = (state) => state.selectedServiceClients;
+export const selectedService = (state) => state.selectedService;

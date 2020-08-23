@@ -1,19 +1,18 @@
-import Vuex from "vuex";
+import mutations from "./mutations";
 import * as getters from "./getters";
-import * as mutations from "./mutations";
 import * as actions from "./actions";
 
 const initialState = {
-  payments: [],
-  selectedPayment: null,
+  services: [],
+  clients: [],
+  isLoading: false,
+  selectedService: null,
 };
 
-const paymentModule = new Vuex.Store({
+export default {
   namespaced: true,
   state: initialState,
   getters: getters,
   mutations: mutations,
   actions: actions,
-});
-
-export default paymentModule;
+};

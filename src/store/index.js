@@ -1,8 +1,8 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import request from "./modules/request";
-// import service from "./modules/service";
-// import payment from "./modules/payment";
+import service from "./modules/service";
+import payment from "./modules/payment";
 
 Vue.use(Vuex);
 
@@ -15,7 +15,7 @@ export default new Vuex.Store({
   state: initialState,
   modules: {
     request,
-    // service,
-    // payment,
+    service,
+    payment,
   },
 });

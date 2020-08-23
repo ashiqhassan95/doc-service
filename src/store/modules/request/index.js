@@ -1,15 +1,12 @@
-import * as getters from "./getters";
 import mutations from "./mutations";
+import * as getters from "./getters";
 import * as actions from "./actions";
 
 const initialState = {
-  requests: [],
-  selectedServiceClients: [],
+  services: [],
+  clients: [],
   isLoading: false,
-  selectedRequest: null,
-  totalRequestCount: 50,
-  perPageRequestCount: 5,
-  currentPage: 1,
+  selectedService: null,
 };
 
 export default {

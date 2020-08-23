@@ -34,7 +34,7 @@
           <b-card-header class="d-flex align-items-center">
             <div class="flex-grow-1">
               <p class="m-0">
-                <strong>Pending Request</strong>
+                <strong>Pending Payment</strong>
               </p>
               <p class="m-0">
                 <strong class="text-muted font-13">{{
@@ -109,7 +109,7 @@
             <b-button
               size="sm"
               variant="primary"
-              @click="acceptRequest(client.id, client.serviceId)"
+              @click="createInvoice(client.id, client.serviceId)"
               >Accept Request</b-button
             >
             <b-button size="sm" variant="outline-primary" class="ml-3"
@@ -131,7 +131,7 @@ import WizardSteps from "@/components/custom/WizardSteps.vue";
 import WizardStep from "@/components/custom/WizardStep.vue";
 
 export default {
-  name: "Request",
+  name: "Payment",
   components: {
     WizardStep,
     WizardSteps,
@@ -143,29 +143,30 @@ export default {
     };
   },
   computed: {
-    ...mapGetters("request", {
+    ...mapGetters("payment", {
       services: "services",
       isLoading: "isLoading",
       clients: "clients",
     }),
   },
   async mounted() {
-    await this.fetchServices(); 
-    this.onSlideChanged();
+    await this.fetchServices();
+    await this.onSlideChanged();
   },
   methods: {
-    ...mapActions("request", [
+    ...mapActions("payment", [
       "fetchServices",
       "getClientForService",
-      "acceptClientRequest",
+      "geerateInvoice",
     ]),
-    async onSlideChanged() { 
+
+    async onSlideChanged() {
       const service = this.services[this.slide];
       await this.getClientForService(service.id); 
     },
 
-    async acceptRequest(clientId, serviceId) { 
-      await this.acceptClientRequest({clientId, serviceId});
+    async createInvoice(clientId, serviceId) { 
+      await this.geerateInvoice({clientId, serviceId});
     },
   },
 };

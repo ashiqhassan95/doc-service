@@ -10,9 +10,10 @@
 
             <b-collapse id="nav-text-collapse" is-nav>
               <b-navbar-nav>
-                <router-link class="nav-link active" to="/">Request</router-link>
-                <router-link class="nav-link" to="/about">Services</router-link>
-                <router-link class="nav-link" to="/request">Payments</router-link>
+                <router-link class="nav-link" to="/">Home</router-link>
+                <router-link class="nav-link" to="/request">Request</router-link>
+                <router-link class="nav-link" to="/service">Services</router-link>
+                <router-link class="nav-link" to="/payment">Payments</router-link>
               </b-navbar-nav>
             </b-collapse>
           </b-navbar>
