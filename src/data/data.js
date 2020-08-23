@@ -1,7 +1,12 @@
 import json from "./sample-data.json";
 
-const getCustomers = () => { 
+const getCustomers = () => {
+  const services = getServices();
   const customers = json.data.customers.map((item) => {
+    const serviceChosen = services.filter(
+      (serviceItem) => serviceItem.id === item.service_id
+    );
+
     return {
       id: item.id,
       name: item.name,
@@ -14,6 +19,7 @@ const getCustomers = () => {
       deals: item.deals,
       avatar: item.avatar,
       avaiableSlots: item.avaiable_slots,
+      service: serviceChosen.length ? serviceChosen[0] : null,
     };
   });
   return customers;

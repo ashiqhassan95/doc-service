@@ -6,38 +6,9 @@ export const fetchServices = ({ commit }) => {
   commit(types.SET_LOADING, true);
 
   return new Promise((resolve) => {
-    const services = data.getServices();
-    const customers = data.getCustomers();
-    const pendingService = [];
-
-    services.forEach((serviceItem) => {
-      const { id, name, description, category, price, poster } = serviceItem;
-      const service = {
-        id,
-        name,
-        description,
-        category,
-        price,
-        poster,
-        clients: customers.filter((clienItem) => {
-          if (clienItem.serviceId === id) {
-            const status = ls.get(
-              `CLIENT_${clienItem.id}_SERVICE_${id}_STATUS`
-            );
-
-            if (status === null || status === "PENDING") {
-              return true;
-            }
-
-            return false;
-          }
-          return false;
-        }),
-      };
-      pendingService.push(service);
-    }); 
+    const services = data.getServices(); 
     commit(types.SET_LOADING, false);
-    commit(types.SET_SERVICES, pendingService);
+    commit(types.SET_SERVICES, services);
     resolve(true);
   });
 };

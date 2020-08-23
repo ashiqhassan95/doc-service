@@ -18,10 +18,28 @@
             v-for="service in services"
             :key="service.id"
             :caption="service.name"
-            :text="service.description"
             :img-src="service.poster"
-          />
+          >
+            <p class="mb-1">{{ service.price | formatMoney }}</p>
+            <p>
+              {{ service.description }}
+            </p>
+          </b-carousel-slide>
         </b-carousel>
+      </b-col>
+    </b-row>
+    <b-row class="mt-4" v-if="clients.length === 0">
+      <b-col>
+        <b-alert show variant="info">No clients available</b-alert>
+      </b-col>
+    </b-row>
+    <b-row class="mt-4" v-if="clients.length !== 0">
+      <b-col>
+        <b-alert variant="primary" show dismissible fade>
+          These are your upcoming services. You could scan your customer’s QR
+          Code before service to check-in, or scan QR Code to generate invoice
+          for payments.
+        </b-alert>
       </b-col>
     </b-row>
     <b-row>
@@ -37,16 +55,16 @@
                 <strong>Upcomming Service</strong>
               </p>
               <p class="m-0">
-                <strong class="text-muted font-13">{{
-                  client.requestedOn | unixToShortReadable
-                }}</strong>
+                <strong class="text-muted font-13">
+                  {{ client.requestedOn | unixToShortReadable }}
+                </strong>
               </p>
             </div>
             <div>
               <WizardSteps>
-                <WizardStep title="Request" step="1" :active="true" />
-                <WizardStep title="Service" step="2" :active="false" />
-                <WizardStep title="Payment" step="3" :active="false" />
+                <WizardStep title="Request" step="1" :completed="true" />
+                <WizardStep title="Service" step="2" :active="true" />
+                <WizardStep title="Payment" step="3" />
               </WizardSteps>
             </div>
           </b-card-header>
@@ -82,13 +100,16 @@
               </div>
             </div>
             <div class="mt-3">
-              <p class="m-0">This customer is available at:</p>
+              <p class="m-0">
+                Check in here or scan customer’s QR Code to check in when the
+                service is about to start
+              </p>
               <div class="d-flex mt-2">
                 <i class="icon-calendar icons"></i>
                 <div class="flex-grow-1 ml-3">
                   <p
                     class="m-0"
-                    v-for="(time, index) in client.avaiableSlots"
+                    v-for="(time, index) in client.avaiableSlots.slice(0, 1)"
                     :key="index"
                   >
                     {{ time | unixToLongReadable }}
@@ -106,14 +127,15 @@
           </b-card-body>
 
           <b-card-footer>
+            <b-button size="sm" variant="primary" @click="createCheckIn"
+              >Check-in</b-button
+            >
             <b-button
               size="sm"
-              variant="primary"
-              @click="createCheckIn(client.id, client.serviceId)"
-              >Accept Request</b-button
-            >
-            <b-button size="sm" variant="outline-primary" class="ml-3"
-              >Reschedule</b-button
+              variant="outline-primary"
+              class="ml-3"
+              @click="createInvoice(client.id, client.serviceId)"
+              >Generate Invoice</b-button
             >
             <b-button size="sm" variant="outline-primary" class="ml-3">
               <i class="icon-options-vertical icons"></i>More
@@ -157,24 +179,21 @@ export default {
     ...mapActions("service", [
       "fetchServices",
       "getClientForService",
-      "geerateInvoice",
+      "generateInvoice",
     ]),
-    
+
     async onSlideChanged() {
-      const service = this.services[this.slide]; 
-      await this.getClientForService(service.id); 
+      const service = this.services[this.slide];
+      await this.getClientForService(service.id);
     },
 
-    async createCheckIn(clientId, serviceId) { 
-      await this.checkInClient({clientId, serviceId});
+    createCheckIn() {
+      alert("Check-in clicked");
+    },
+
+    async createInvoice(clientId, serviceId) {
+      await this.generateInvoice({ clientId, serviceId });
     },
   },
 };
 </script>
-
-<style lang="css">
-.carousel-caption {
-  background: #00000052;
-  border-radius: 50px;
-}
-</style>

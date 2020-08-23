@@ -5,9 +5,6 @@
         <div>
           <b-navbar toggleable="sm" type="dark" variant="dark">
             <b-navbar-toggle target="nav-text-collapse"></b-navbar-toggle>
-
-            <!-- <b-navbar-brand>BootstrapVue</b-navbar-brand> -->
-
             <b-collapse id="nav-text-collapse" is-nav>
               <b-navbar-nav>
                 <router-link class="nav-link" to="/">Home</router-link>
@@ -20,7 +17,9 @@
         </div>
       </header>
       <main class="py-4">
-        <router-view />
+        <transition name="fade" mode="out-in">
+          <router-view />
+        </transition>
       </main>
     </b-container>
   </div>
@@ -53,6 +52,12 @@
   }
 }
 
+.carousel-caption {
+  background: #00000052;
+  border-radius: 15px;
+  padding: 10px 5px;
+}
+
 .step-content {
   min-width: 3.5em;
   width: 3.5em;
@@ -81,5 +86,17 @@
 }
 .font-14 {
   font-size: 14px;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */
+ {
+  opacity: 0;
+}
+.nav-link.active {
+    border-bottom: 1px solid #fff;
 }
 </style>

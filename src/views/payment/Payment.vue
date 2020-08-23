@@ -18,10 +18,19 @@
             v-for="service in services"
             :key="service.id"
             :caption="service.name"
-            :text="service.description"
             :img-src="service.poster"
-          />
+          >
+            <p class="mb-1">{{ service.price | formatMoney }}</p>
+            <p>
+              {{ service.description }}
+            </p>
+          </b-carousel-slide>
         </b-carousel>
+      </b-col>
+    </b-row>
+    <b-row class="mt-4" v-if="clients.length === 0">
+      <b-col>
+        <b-alert show variant="info">No clients available</b-alert>
       </b-col>
     </b-row>
     <b-row>
@@ -44,9 +53,9 @@
             </div>
             <div>
               <WizardSteps>
-                <WizardStep title="Request" step="1" :active="true" />
-                <WizardStep title="Service" step="2" :active="false" />
-                <WizardStep title="Payment" step="3" :active="false" />
+                <WizardStep title="Request" step="1" :completed="true" />
+                <WizardStep title="Service" step="2" :completed="true" />
+                <WizardStep title="Payment" step="3" :active="true" />
               </WizardSteps>
             </div>
           </b-card-header>
@@ -82,17 +91,19 @@
               </div>
             </div>
             <div class="mt-3">
-              <p class="m-0">This customer is available at:</p>
+              <p class="m-0">
+                Service is complete, please confirm payment amount:
+              </p>
               <div class="d-flex mt-2">
-                <i class="icon-calendar icons"></i>
-                <div class="flex-grow-1 ml-3">
-                  <p
-                    class="m-0"
-                    v-for="(time, index) in client.avaiableSlots"
-                    :key="index"
-                  >
-                    {{ time | unixToLongReadable }}
-                  </p>
+                <i class="icon-info icons"></i>
+                <div class="flex-grow-1">
+                  <strong class="ml-3">Invoice item:</strong>
+                  <div class="d-flex">
+                    <p class="m-0 ml-3 mt-2 flex-grow-1">Session price</p>
+                    <p class="m-0 ml-3 mt-2 font-weight-bold">
+                      {{ client.service.price | formatMoney }}
+                    </p>
+                  </div>
                 </div>
               </div>
 
@@ -106,14 +117,15 @@
           </b-card-body>
 
           <b-card-footer>
+            <b-button size="sm" variant="primary" @click="resendInvoice"
+              >Resend Invoice</b-button
+            >
             <b-button
               size="sm"
-              variant="primary"
-              @click="createInvoice(client.id, client.serviceId)"
-              >Accept Request</b-button
-            >
-            <b-button size="sm" variant="outline-primary" class="ml-3"
-              >Reschedule</b-button
+              variant="outline-primary"
+              class="ml-3"
+              @click="startChat"
+              >Start a Chat</b-button
             >
             <b-button size="sm" variant="outline-primary" class="ml-3">
               <i class="icon-options-vertical icons"></i>More
@@ -154,27 +166,24 @@ export default {
     await this.onSlideChanged();
   },
   methods: {
-    ...mapActions("payment", [
-      "fetchServices",
-      "getClientForService",
-      "geerateInvoice",
-    ]),
+    ...mapActions("payment", ["fetchServices", "getClientForService"]),
 
     async onSlideChanged() {
       const service = this.services[this.slide];
-      await this.getClientForService(service.id); 
+      await this.getClientForService(service.id);
     },
 
-    async createInvoice(clientId, serviceId) { 
-      await this.geerateInvoice({clientId, serviceId});
+    async createInvoice(clientId, serviceId) {
+      await this.geerateInvoice({ clientId, serviceId });
+    },
+
+    resendInvoice() {
+      alert("Resend Invoice Clicked");
+    },
+
+    startChat() {
+      alert("Start Chat Clicked");
     },
   },
 };
 </script>
-
-<style lang="css">
-.carousel-caption {
-  background: #00000052;
-  border-radius: 50px;
-}
-</style>

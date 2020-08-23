@@ -9,8 +9,8 @@
           controls
           indicators
           background="#ababab"
-          img-width="720"
-          img-height="360"
+          :img-width="420"
+          :img-height="360"
           style="text-shadow: 1px 1px 2px #333;"
           @sliding-end="onSlideChanged"
         >
@@ -18,10 +18,19 @@
             v-for="service in services"
             :key="service.id"
             :caption="service.name"
-            :text="service.description"
             :img-src="service.poster"
-          />
+          >
+            <p class="mb-1">{{ service.price | formatMoney }}</p>
+            <p>
+              {{ service.description }}
+            </p>
+          </b-carousel-slide>
         </b-carousel>
+      </b-col>
+    </b-row>
+    <b-row class="mt-4" v-if="clients.length === 0">
+      <b-col>
+        <b-alert show variant="info">No clients available</b-alert>
       </b-col>
     </b-row>
     <b-row>
@@ -45,8 +54,8 @@
             <div>
               <WizardSteps>
                 <WizardStep title="Request" step="1" :active="true" />
-                <WizardStep title="Service" step="2" :active="false" />
-                <WizardStep title="Payment" step="3" :active="false" />
+                <WizardStep title="Service" step="2" />
+                <WizardStep title="Payment" step="3" />
               </WizardSteps>
             </div>
           </b-card-header>
@@ -112,7 +121,11 @@
               @click="acceptRequest(client.id, client.serviceId)"
               >Accept Request</b-button
             >
-            <b-button size="sm" variant="outline-primary" class="ml-3"
+            <b-button
+              size="sm"
+              variant="outline-primary"
+              class="ml-3"
+              @click="reschedule"
               >Reschedule</b-button
             >
             <b-button size="sm" variant="outline-primary" class="ml-3">
@@ -150,7 +163,7 @@ export default {
     }),
   },
   async mounted() {
-    await this.fetchServices(); 
+    await this.fetchServices();
     this.onSlideChanged();
   },
   methods: {
@@ -159,21 +172,18 @@ export default {
       "getClientForService",
       "acceptClientRequest",
     ]),
-    async onSlideChanged() { 
+    async onSlideChanged() {
       const service = this.services[this.slide];
-      await this.getClientForService(service.id); 
+      await this.getClientForService(service.id);
     },
 
-    async acceptRequest(clientId, serviceId) { 
-      await this.acceptClientRequest({clientId, serviceId});
+    async acceptRequest(clientId, serviceId) {
+      await this.acceptClientRequest({ clientId, serviceId });
+    },
+
+    reschedule() {
+      alert("Reschedule Clicked");
     },
   },
 };
 </script>
-
-<style lang="css">
-.carousel-caption {
-  background: #00000052;
-  border-radius: 50px;
-}
-</style>

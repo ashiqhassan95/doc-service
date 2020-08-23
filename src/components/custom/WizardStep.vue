@@ -1,5 +1,5 @@
 <template>
-  <li class="step" :class="{'step-active' : active}">
+  <li class="step" :class="{ 'step-active': active, ' step-success': completed }">
     <div class="step-content">
       <span class="step-circle">{{ step }}</span>
       <span class="step-text">{{ title }}</span>
@@ -19,6 +19,10 @@ export default {
       required: true
     },
     active: {
+      type: [Boolean, String],
+      required: false
+    },
+    completed: {
       type: [Boolean, String],
       required: false
     }

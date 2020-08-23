@@ -15,6 +15,10 @@ Vue.filter('unixToShortReadable', (unix) => {
   return momentTm.format("hh:mm A DD/MM/YYYY");
 });
 
+Vue.filter('formatMoney', (money) => {
+  return `$${money}`;
+});
+
 // Install BootstrapVue
 Vue.use(BootstrapVue);
 // Optionally install the BootstrapVue icon components plugin
