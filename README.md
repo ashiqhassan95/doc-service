@@ -6,10 +6,12 @@
 3. Bootstrap vue is used for bootstrap components
 4. Moment is used for formating time.
 
-## Project setup
+## Project up and running
 ```
-npm install
+1. npm install
+2. npm run serve
 ```
+
 
 ### Compiles and hot-reloads for development
 ```
