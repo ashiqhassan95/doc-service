@@ -2,6 +2,9 @@ import * as data from "../../../data/data";
 import * as types from "./mutation-type";
 import ls from "../../../services/ls";
 
+/**
+ * Return services for payments
+ */
 export const fetchServices = ({ commit }) => {
   commit(types.SET_LOADING, true);
 
@@ -13,6 +16,9 @@ export const fetchServices = ({ commit }) => {
   });
 };
 
+/**
+ * Return clients for the given service
+ */
 export const getClientForService = ({ commit }, serviceId) => {
   return new Promise((resolve, reject) => {
     if (!serviceId) {
@@ -36,21 +42,6 @@ export const getClientForService = ({ commit }, serviceId) => {
       return false;
     });
     commit(types.SET_CLIENTS_TO_SERIVICE, filteredCustomers);
-    resolve(true);
-  });
-};
-
-export const geerateInvoice = ({ commit }, { clientId, serviceId }) => {
-  return new Promise((resolve, reject) => {
-    if (!clientId || !serviceId) {
-      reject({
-        success: false,
-        message: "required args not passed",
-      });
-    }
-
-    ls.set(`CLIENT_${clientId}_SERVICE_${serviceId}_STATUS`, "INVOICED");
-    commit(types.REMOVE_CLIENT, clientId);
     resolve(true);
   });
 };

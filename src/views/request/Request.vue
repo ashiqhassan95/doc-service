@@ -20,7 +20,7 @@
             :caption="service.name"
             :img-src="service.poster"
           >
-            <p class="mb-1">{{ service.price | formatMoney }}</p>
+            <p class="mb-1">{{ service.price | formatMoney }} for one session</p>
             <p>
               {{ service.description }}
             </p>

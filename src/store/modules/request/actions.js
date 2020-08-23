@@ -2,6 +2,9 @@ import * as data from "../../../data/data";
 import * as types from "./mutation-type";
 import ls from "../../../services/ls";
 
+/**
+ * Return services for request
+ */
 export const fetchServices = ({ commit }) => {
   commit(types.SET_LOADING, true);
 
@@ -13,6 +16,9 @@ export const fetchServices = ({ commit }) => {
   });
 };
 
+/**
+ * Return clients for the given service
+ */
 export const getClientForService = ({ commit }, serviceId) => {
   return new Promise((resolve, reject) => {
     if (!serviceId) {
@@ -40,6 +46,9 @@ export const getClientForService = ({ commit }, serviceId) => {
   });
 };
 
+/**
+ * Accept client request
+ */
 export const acceptClientRequest = ({ commit }, { clientId, serviceId }) => {
   return new Promise((resolve, reject) => {
     if (!clientId || !serviceId) {

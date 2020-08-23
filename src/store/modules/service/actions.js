@@ -16,6 +16,9 @@ export const fetchServices = ({ commit }) => {
   });
 };
 
+/**
+ * Return clients for the given service
+ */
 export const getClientForService = ({ commit, }, serviceId) => {
   return new Promise((resolve, reject) => {
     if (!serviceId) {
@@ -43,6 +46,9 @@ export const getClientForService = ({ commit, }, serviceId) => {
   });
 };
 
+/**
+ * Generate Invoice for the given client for particular service
+ */
 export const generateInvoice = ({ commit }, { clientId, serviceId }) => {
   return new Promise((resolve, reject) => { 
     if (!clientId || !serviceId) {
@@ -51,7 +57,7 @@ export const generateInvoice = ({ commit }, { clientId, serviceId }) => {
         message: "required args not passed",
       });
     }
-
+ 
     ls.set(`CLIENT_${clientId}_SERVICE_${serviceId}_STATUS`, "PAYMENT");
     commit(types.REMOVE_CLIENT, clientId);
     resolve(true);

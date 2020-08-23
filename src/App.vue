@@ -5,7 +5,7 @@
         <div>
           <b-navbar toggleable="sm" type="dark" variant="dark">
             <b-navbar-toggle target="nav-text-collapse"></b-navbar-toggle>
-            <b-collapse id="nav-text-collapse" is-nav>
+            <b-collapse id="nav-text-collapse" is-nav class="justify-content-center">
               <b-navbar-nav>
                 <router-link class="nav-link" to="/">Home</router-link>
                 <router-link class="nav-link" to="/request">Request</router-link>
