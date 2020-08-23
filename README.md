@@ -12,6 +12,10 @@
 2. npm run serve
 ```
 
+### Install dependencies
+```
+npm install
+```
 
 ### Compiles and hot-reloads for development
 ```
