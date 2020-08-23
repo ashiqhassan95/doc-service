@@ -4,6 +4,7 @@
 1. Vuex is used for statemangement
 2. Vue Router is used for routing
 3. Bootstrap vue is used for bootstrap components
+4. Moment is used for formating time.
 
 ## Project setup
 ```
